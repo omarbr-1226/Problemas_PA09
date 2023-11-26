@@ -18,16 +18,16 @@ public class PROBLEMA_5 {
         numUno=sc.nextInt();
         System.out.println("Ingresa la potencia");
         pote=sc.nextInt();
-        
-        System.out.println("La potencia es: "+Potencia(numUno,pote));
+        System.out.println(numUno + "^" + pote + "=" + Potencia(numUno,pote));
     }
     
     public static int Potencia(int x,int potencia){
-        int potencias;
-        potencias=x*x;
-        for (int i = x; i < potencias;  i++) {
-            potencia=potencia*x;
-        }
-        return potencias;
+        int potencias=1;
+            for (int i = 1; i <= potencia; i++) {
+                potencias = potencias * x;
+            }
+            return potencias;
+
     }
 }
+
