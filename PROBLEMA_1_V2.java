@@ -28,7 +28,7 @@ public class PROBLEMA_1_V2 {
             trabajador=Trabajador();
             sueldo=Sueldo(sueldo);
             impuesto=Impuesto(sueldo);
-            Pagar=
+            
             if (sueldo<100000){
                 System.out.println("Al trabajador de tipo "+trabajador+" se le debera pagar: ");
                 System.out.println(impuesto);
@@ -79,7 +79,6 @@ public class PROBLEMA_1_V2 {
             return sueld;
         }
         pagar=sueld-impuesto;
-        //System.out.println("El total a pagar es: "+pagar);
         return pagar;
     }
 }
