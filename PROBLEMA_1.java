@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class PROBLEMA_1 {
     public static void main(String[] args) {
-        double totalObreros = 0, totalEmpleados = 0;
+        double Obreros = 0, Empleados = 0;
         int numTrabajadores = 102;
         Scanner sc = new Scanner(System.in);
 
@@ -32,16 +32,17 @@ public class PROBLEMA_1 {
             double pago = calcularPago(hrsTrabajadas, sldoxHora, tipo);
 
             if (tipo == 1) {
-                totalObreros += pago;
+                Obreros += pago;
             } else if (tipo== 2) {
-                totalEmpleados += pago;
+                Empleados += pago;
             }
 
             System.out.println("El pago para el trabajador " + (i + 1) + " es: " + pago);
+            System.out.println("-------------------------------------------------------------");
         }
 
-        System.out.println("El total a pagar a los obreros es: " + totalObreros);
-        System.out.println("El total a pagar a los empleados es: " + totalEmpleados);
+        System.out.println("El total a pagar a los obreros es: " + Obreros);
+        System.out.println("El total a pagar a los empleados es: " + Empleados);
     }
 
     public static int horasTrabajadas(Scanner sc) {
