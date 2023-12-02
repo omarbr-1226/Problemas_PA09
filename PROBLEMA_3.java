@@ -1,5 +1,5 @@
 /*
-3. Escribir un método y su respectiva llamada, que termine si argumento entero positivo se trata de un 
+3. Escribir un método y su respectiva llamada, que termine si su argumento entero positivo se trata de un
 numero primo o no.
 
  */
@@ -13,20 +13,31 @@ import java.util.Scanner;
  * Elaborado: 
  */
 public class PROBLEMA_3 {
+    static Scanner sc= new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        int num;
-        System.out.println("Ingresa un numero");
-        num = sc.nextInt();
-        Numero(num);
-    }
-    public static int Numero(int a){
-        int primo;
-        if (a %2==0){
-            System.out.println("es primo");
-        }else{
-            System.out.println("no es primo");
+        int numero= numero();
+        boolean esPrimo = Primo(numero);
+        if (esPrimo) {
+            System.out.println("El número " + numero + " es un numero primo.");
+        } else {
+            System.out.println("El número " + numero + " no es un numero primo.");
         }
-    return 0;
+    }
+    public static int numero (){
+        int numero;
+        System.out.println("Ingresa un numero:");
+        numero= sc.nextInt();
+        return numero;
+    }
+    public static boolean Primo(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
