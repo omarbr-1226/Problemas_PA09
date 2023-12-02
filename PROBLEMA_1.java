@@ -5,7 +5,7 @@ a) Las horas trabajadas
 b) El sueldo por hora
 c) El tipo de trabajador (1.-obrero,2.-empleado)
 Para calcular los pagos considerar lo siguiente:
-• Los obreros pagan 10 % de impuesto
+• Los obreros pagan 12 % de impuesto
 • Los empleados pagan 10 % de impuesto.
 • Los trabajadores (obreros y empleados) que reciban un pago menor de 100,000 pesos no pagan 
 impuesto.
@@ -20,38 +20,56 @@ import java.util.Scanner;
  */
 public class PROBLEMA_1 {
     public static void main(String[] args) {
+        double totalObreros = 0, totalEmpleados = 0;
+        int numTrabajadores = 102;
         Scanner sc = new Scanner(System.in);
-        int hrs[]=new int[102],sueldHr[]=new int[102],obrero=0,empleado=0;
-        String trabajadores[]=new String[102];
-        //Inicializar vectores
-        for (int i = 0; i < 102; i++) {
-            hrs[i]=0;
-            sueldHr[i]=0;
+
+        for (int i = 0; i < numTrabajadores; i++) {
+            int hrsTrabajadas = horasTrabajadas(sc);
+            double sldoxHora = sueldoPorHora(sc);
+            int tipo = tipoTrabajador(sc);
+
+            double pago = calcularPago(hrsTrabajadas, sldoxHora, tipo);
+
+            if (tipo == 1) {
+                totalObreros += pago;
+            } else if (tipo== 2) {
+                totalEmpleados += pago;
+            }
+
+            System.out.println("El pago para el trabajador " + (i + 1) + " es: " + pago);
         }
-        //Llena vectores
-        for (int i = 0; i < 102; i++) {
-            System.out.println("/////////////// Ingrese los datos para el trabajador numero "+(i+1)+" ///////////////");
-             System.out.println("Ingresa las horas trabajadas");
-            hrs[i]=sc.nextInt();
-            System.out.println("Ingresa el sueldo por hora");
-            sueldHr[i]=sc.nextInt();
-            System.out.println("Que tipo de trabajador eres? ");
-            trabajadores[i]=sc.next();
-            System.out.println("----------------------------------------------------------------------------------------------------------------------------");
-        }
-       
+
+        System.out.println("El total a pagar a los obreros es: " + totalObreros);
+        System.out.println("El total a pagar a los empleados es: " + totalEmpleados);
     }
-    public  static int Gacman(int x,int y){
-        double impuesto=0;
-        for (int i = 0; i < 102; i++) {
-            if (x<100000) {
-                System.out.println("");
-                y=0;
-            }else{
-                impuesto=(x*0.10)*x;
+
+    public static int horasTrabajadas(Scanner sc) {
+        System.out.println("Ingrese las horas trabajadas:");
+        return sc.nextInt();
+    }
+
+    public static double sueldoPorHora(Scanner sc) {
+        System.out.println("Ingrese el sueldo por hora:");
+        return sc.nextDouble();
+    }
+
+    public static int tipoTrabajador(Scanner sc) {
+        System.out.println("Ingrese el tipo de trabajador (1.-obrero, 2.-empleado):");
+        return sc.nextInt();
+    }
+
+    public static double calcularPago(int horasTrabajadas, double sueldoPorHora, int tipoTrabajador) {
+        double pago = horasTrabajadas * sueldoPorHora;
+
+        if (pago >= 100000) {
+            if (tipoTrabajador == 1) {
+                pago *= 0.88;
+            } else if (tipoTrabajador == 2) {
+                pago *= 0.9;
             }
         }
-        return 0;
+        return pago;
     }
     
 }
